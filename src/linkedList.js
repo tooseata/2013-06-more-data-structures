@@ -6,23 +6,27 @@ var makeLinkedList = function(){
   list.tail = null;
 
   list.addToTail = function(value){
-    //debugger;
-    var node = makeNode(value); 
-    this.tail = node;
+    
+    if (this.tail === null) {
+      this.tail = makeNode(value);
+      this.head = this.tail;
+    } else{
+      this.tail.next = makeNode(value);
+      this.tail  = this.tail.next;
+    };
 
-    if (this.head === null) {
-      this.head = node;
-    }
   };
 
   list.removeHead = function(){
-    //debugger;
-    var x = this.head;
-    console.log(x);
-    var y = x.next;
+    var tempvar = this.head.value;
+    this.head = this.head.next;
+    return tempvar;
   };
 
+
   list.contains = function(value){
+
+
 
   };
 
