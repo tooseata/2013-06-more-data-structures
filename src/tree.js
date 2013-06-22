@@ -1,15 +1,20 @@
-var makeTree = function(){
+var makeTree = function(value){
+// debugger;
   var newTree = {};
-  newTree.value = undefined;
+  newTree.value = value;
   newTree.children = undefined;
-
+  _.extend(newTree, treeMethods);
   return newTree;
 };
 
 var treeMethods = {};
 
-treeMethods.addChild = function(){
+treeMethods.addChild = function(value){
+	//debugger;
+	var tmp = makeTree(value);
 };
 
 treeMethods.contains = function(){
 };
+
+
