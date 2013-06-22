@@ -26,12 +26,21 @@ var makeLinkedList = function(){
 
   list.contains = function(value){
 
-
-
+    function inspect (node) {
+      if (node.value === value) {
+        return true;
+      } else {
+          if (node.next === null) {
+            return false;
+          } else {
+            return inspect(node.next);
+          }
+      }
+    }
+    return inspect(this.head);
   };
 
   return list;
-
 };
 
 var makeNode = function(value){

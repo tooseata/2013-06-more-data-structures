@@ -39,10 +39,15 @@ describe("linkedList", function() {
 
   it("Returns boolean reflecting whether or not the passed-in value is in the linked list", function() {
     linkedList.addToTail('first');
-    expect(linkedList.contain('first')).toEqual(true);
-  });
+    linkedList.addToTail('second');
+    linkedList.addToTail('third');
+    linkedList.addToTail('forth');
+    linkedList.addToTail('fifth');
+    linkedList.addToTail('sixth');
+    expect(linkedList.contains('forth')).toEqual(true);
+    expect(linkedList.contains('not in list')).toEqual(false);
 
- 
+  });
 
 });
 
