@@ -2,7 +2,7 @@ var makeTree = function(value){
 // debugger;
   var newTree = {};
   newTree.value = value;
-  newTree.children = undefined;
+  newTree.children = [];
   _.extend(newTree, treeMethods);
   return newTree;
 };
@@ -11,10 +11,12 @@ var treeMethods = {};
 
 treeMethods.addChild = function(value){
 	//debugger;
-	var tmp = makeTree(value);
+	this.children.push(makeTree(value));
+	return this.children[this.children.length-1];
 };
 
-treeMethods.contains = function(){
+treeMethods.contains = function(value){
+
 };
 
 

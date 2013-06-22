@@ -37,7 +37,6 @@ var makeLinkedList = function(){
           }
       }
     }
-    
     return inspect(this.head);
   };
 

@@ -12,13 +12,14 @@ describe("tree", function() {
   });
 
  it("takes any value, sets that as the target of a node, and adds that node as a child of the tree", function() {
-    //debugger;
     tree.addChild('first');
-    //expect(tree.value).toEqual('first');
+    tree.addChild('second');
+    tree.addChild('third');
+    tree.addChild('fourth');
+    expect(tree.children.length).toEqual(4);
+    expect(tree.children[tree.children.length-1].value).toEqual('fourth');
+
   });
-
-
-
 
 
 
