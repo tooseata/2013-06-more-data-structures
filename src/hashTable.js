@@ -7,10 +7,19 @@ var HashTable = function(){
   //   limitedArray.set(3, 'hi');
   //   limitedArray.get(3); // alerts 'hi'
   //
+
   this._storage = makeLimitedArray(this._limit);
 };
 
-HashTable.prototype.insert = function(){
+HashTable.prototype.insert = function(value, key){
+
+	var hashValue = getIndexBelowMaxForKey(value, this._limit);
+	//debugger;
+	if(this._storage) {
+		this._storage.set(hashValue, value)
+	} else {
+
+	}
 };
 
 HashTable.prototype.retrieve = function(){
