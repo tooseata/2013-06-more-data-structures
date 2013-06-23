@@ -15,7 +15,6 @@ treeMethods.addChild = function(value){
 };
 
 treeMethods.contains = function(value){
-	//debugger;
 	return this.value === value || _.contains(_.map(this.children, function(child){
 		return child.contains(value);
 	}), true);
