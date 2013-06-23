@@ -21,6 +21,14 @@ describe("tree", function() {
 
   });
 
+it("Can search for a value and return Ture is found; and False if not found", function() {
+    tree.addChild('first');
+    tree.addChild('second');
+    tree.addChild('third');
+    tree.addChild('fourth');
+    expect(tree.contains('third')).toEqual(true);
+  });
+
 
 
 
