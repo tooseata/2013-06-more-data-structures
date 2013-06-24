@@ -11,10 +11,31 @@ describe("hashTable", function() {
     expect(hashTable.remove).toEqual(jasmine.any(Function));
   });
 
-it("should have methods named 'insert' and 'retrieve", function() {
-    hashTable.insert('Chris', 28);
-    hashTable.insert('Dave', 24);
-    hashTable.insert('Daniel', 19);
+it("should update a value on a key that is already stored", function() {
+    hashTable.insert("Chris", "28");
+    hashTable.insert("David", "24");
+    hashTable.insert("Chris", "Second Chris");
+    expect(hashTable.retrieve("Chris")).toEqual("Second Chris");
+    
+  });
+
+it("should handle collisions", function() {
+    hashTable.insert("Chris", "28");
+    hashTable.insert("David", "24");
+    hashTable.insert("Daniel", "19");
+    hashTable.insert("Andrew", "15");
+    expect(hashTable.retrieve("Chris")).toEqual("28");
+    expect(hashTable.retrieve("Daniel")).toEqual("19");
+    
+  });
+
+it("should retrieve sucessfully ", function() {
+    hashTable.insert("Chris", "28");
+    hashTable.insert("David", "24");
+    hashTable.insert("Daniel", "19");
+    expect(hashTable.retrieve("Chris")).toEqual("28");
+    expect(hashTable.retrieve("Daniel")).toEqual("19");
+
     
   });
   // add more tests here to test the functionality of hashTable

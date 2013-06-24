@@ -1,5 +1,5 @@
 var HashTable = function(){
-  this._limit = 8;
+  this._limit = 2;
 
   // Use a limited array to store inserted elements.
   // It'll keep you from using too much space. Usage:
@@ -10,22 +10,38 @@ var HashTable = function(){
 
   this._storage = makeLimitedArray(this._limit);
 };
-
-HashTable.prototype.insert = function(value, key){
-
-	var hashValue = getIndexBelowMaxForKey(value, this._limit);
+HashTable.prototype.insert = function(key, value){
 	//debugger;
-	if(this._storage) {
-		this._storage.set(hashValue, value)
+	var newStorage = getIndexBelowMaxForKey(key, this._limit); 
+	if(!!this._storage.get(newStorage)) {
+		var valueChecker = this._storage.get(newStorage);
+		if (valueChecker[0] === key) {
+			valueChecker[1] = value;
+		} else {
+			var tmpArray = this._storage.get(newStorage);
+			tmpArray.push([key,value]);
+		}
 	} else {
-
+		this._storage.set(newStorage, [[key,value]]);
 	}
 };
-
-HashTable.prototype.retrieve = function(){
+HashTable.prototype.retrieve = function(value){
+	var hashValue = getIndexBelowMaxForKey(value, this._limit); 
+	if(!!this._storage.get(hashValue)) {
+		var valueChecker = this._storage.get(hashValue);
+		var result;
+		_.each(valueChecker, function(match){
+			if(match[0] === value){
+				result = match[1];
+			} 
+		});	
+		return result;
+	} else {
+		return value + "is not contained in storage";
+	}
 };
-
 HashTable.prototype.remove = function(){
+
 };
 
 // NOTE: For this code to work, you will NEED the code from hashTableHelpers.js
