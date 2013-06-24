@@ -34,9 +34,19 @@ it("should retrieve sucessfully ", function() {
     hashTable.insert("David", "24");
     hashTable.insert("Daniel", "19");
     expect(hashTable.retrieve("Chris")).toEqual("28");
-    expect(hashTable.retrieve("Daniel")).toEqual("19");
-
-    
+    expect(hashTable.retrieve("Daniel")).toEqual("19");    
   });
+
+it("should delete sucessfully ", function() {
+    hashTable.insert("Chris", "28");
+    hashTable.insert("David", "24");
+    hashTable.insert("Daniel", "19");
+    hashTable.insert("Andrew", "15");
+    hashTable.remove("Chris");
+    expect(hashTable.retrieve("Chris")).toEqual("Chris is not contained in storage");
+    expect(hashTable.retrieve("David")).toEqual("24");
+  });
+
+
   // add more tests here to test the functionality of hashTable
 });
