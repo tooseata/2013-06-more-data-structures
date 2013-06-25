@@ -43,7 +43,7 @@ it("should delete sucessfully ", function() {
     hashTable.insert("Daniel", "19");
     hashTable.insert("Andrew", "15");
     hashTable.remove("Chris");
-    expect(hashTable.retrieve("Chris")).toEqual("Chris is not contained in storage");
+    expect(hashTable.retrieve("Chris")).toEqual(undefined);
     expect(hashTable.retrieve("David")).toEqual("24");
   });
 

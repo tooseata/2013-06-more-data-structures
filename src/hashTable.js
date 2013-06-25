@@ -34,28 +34,23 @@ HashTable.prototype.retrieve = function(value){
 			if(match[0] === value){
 				result = match[1];
 			} 
+			
 		});	
-    	return result;
-	} else {
-		return value + "is not contained in storage";
-	}
+		return result;
+    	
+	} 
 };
 HashTable.prototype.remove = function(value){
-	var hashValue = getIndexBelowMaxForKey(value, this._limit); 
-	var found_collection = this._storage.get(hashValue);
-	if(!!this._storage.get(hashValue)) {
-		debugger;
-		var indexOfValue = _.map(found_collection, function(match){
-			if(match[0] === value){
-				result = match[1];
-			} 
-			return result;
-		});	
+	var newStorage = getIndexBelowMaxForKey(value, this._limit); 
+	if(!!this._storage.get(newStorage)) {
+		var valueChecker = this._storage.get(newStorage);
+		_.each(valueChecker, function(val, index, collection){
+			if (val[0] === value) {
+			collection.splice(index, 1);
+			return 'Delete Sucessful'
+			}
+		});
 	}
-
-	//var indexOfValue = _.indexOf(found_collection, value);
-	//debugger;
-	delete this._storage.get(hashValue)[hashValue][indexOfValue];
 };
 
 // NOTE: For this code to work, you will NEED the code from hashTableHelpers.js
